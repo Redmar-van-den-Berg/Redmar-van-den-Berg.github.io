@@ -20,11 +20,11 @@
           <h6>DCRT</h6>
         </nav>
       </header>
-      <a>
+      <a data-ui="#analysis" class="active">
         <i>genetics</i>
         <div>Analysis</div>
       </a>
-      <a>
+      <a data-ui="#external-resources">
         <i>database</i>
         <div>External resources</div>
       </a>
@@ -45,9 +45,6 @@
     </nav>
 
     <nav class="left m">
-      <header>
-        <img src="https://www.beercss.com/favicon.png" class="circle">
-      </header>
       <a>
         <i>home</i>
         <div>Home</div>
@@ -82,9 +79,14 @@
     </nav>
 
     <main class="responsive">
-      <img src="https://www.beercss.com/beer-and-woman.svg" class="responsive round">
-      <h3>Welcome</h3>
-      <h5>The beer is ready!</h5>
+      <div id="analysis" class="page padding active">
+        <h2><i>genetics</i> Analysis results</h2>
+        <p>The analysis results go here</p>
+      </div>
+      <div id="external-resources" class="page padding">
+        <h2>External resources</h2>
+        <p>Here will be a list of external resources for the specified variant</p>
+      </div>
     </main>
   </body>
 </html>
