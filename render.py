@@ -1,6 +1,6 @@
 import jinja2
 import json
-
+import sys
 
 if __name__ == "__main__":
     template_file = "index.html.j2"
@@ -16,5 +16,10 @@ if __name__ == "__main__":
     environment = jinja2.Environment(loader=jinja2.FileSystemLoader("."))
     template = environment.get_template(template_file)
 
-    print(template.render(results=payload, links=links, variant="ENST00000375549.8:c.100del"))
 
+    if len(sys.argv) == 1:
+        print(template.render(results=payload, links=links, variant="ENST00000375549.8:c.100del"))
+    elif sys.argv[1] == "empty":
+        print(template.render())
+    else:
+        raise NotImplementedError

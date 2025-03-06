@@ -4,12 +4,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
-    <title>GTGT analsys results for {{ variant }}</title>
+    {% if variant is defined %}
+      <title>GTGT analysis results for {{ variant }}</title>
+    {% else %}
+      <title>Genetic Therapy Generator Toolkit</title>
+    {% endif %}
     <link href="https://cdn.jsdelivr.net/npm/beercss@3.9.6/dist/cdn/beer.min.css" rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.9.6/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script type="text/javascript">
-      function myFunction() {
+      <!-- function myFunction() { -->
         // set all additional sections (help, github, disclaimer) to active
         let sections = ['disclaimer', 'documentation', 'github'];
         for (index in sections) {
@@ -119,55 +123,63 @@
 
       <div id="analysis" class="page padding active">
         <h2> Analysis results for {{ variant }}</h2>
-        {% for name in results %}
-          <article>
-            <details>
-              <summary class="none">
-                <div class="row">
-                  <div class="max">
-                    <h3>{{ name }}</h3>
+        {% if results is defined %}
+          {% for name in results %}
+            <article>
+              <details>
+                <summary class="none">
+                  <div class="row">
+                    <div class="max">
+                      <h3>{{ name }}</h3>
+                    </div>
+                    <i>arrow_drop_down</i>
                   </div>
-                  <i>arrow_drop_down</i>
-                </div>
-              </summary>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Annotation</th>
-                    <th>Remaining</th>
-                    <th>Percentage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for fieldname in results[name] %}
-                  {% set value = (results[name][fieldname] * 100) | round(precision=1) %}
-                  <tr>
-                    <td>{{ fieldname }}</td>
-                    <td>{{ value }}% </td>
-                    <td><progress value="{{value}}" max="100"></progress></td>
-                  </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-            </details>
-          </article>
-        {% endfor %}
+                </summary>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Annotation</th>
+                      <th>Remaining</th>
+                      <th>Percentage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for fieldname in results[name] %}
+                    {% set value = (results[name][fieldname] * 100) | round(precision=1) %}
+                    <tr>
+                      <td>{{ fieldname }}</td>
+                      <td>{{ value }}% </td>
+                      <td><progress value="{{value}}" max="100"></progress></td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </details>
+            </article>
+          {% endfor %}
+        {% else %}
+          Please specify a variant to analyze.
+        {% endif %}
       </div>
 
       <div id="external-resources" class="page padding">
         <h2>External resources</h2>
-        <div class="grid">
-          {% for dbname, link in links.items() %}
-            <div class="s12 m6 l3">
-              <a href={{ link }} target="_blank">
-                <article>
-                  <h5>{{ dbname | upper}}</h5>
-                  <p>This is a description of the {{ dbname }} database</p>
-                </article>
-              </a>
-            </div>
-          {% endfor %}
-        </div>
+        {% if links is defined %}
+          <div class="grid">
+            {% for dbname, link in links.items() %}
+              <div class="s12 m6 l3">
+                <a href={{ link }} target="_blank">
+                  <article>
+                    <h5>{{ dbname | upper}}</h5>
+                    <p>This is a description of the {{ dbname }} database</p>
+                  </article>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+        Please specify a variant to discover links to external resources.
+        {% endif %}
       </div>
 
       <div id="export-report" class="page padding">
