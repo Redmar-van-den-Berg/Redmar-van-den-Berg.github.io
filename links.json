@@ -1,0 +1,12 @@
+{
+  "omim_1": "https://www.omim.org/entry/602690",
+  "lovd": "https://databases.lovd.nl/shared/genes/SDHD",
+  "gtex": "https://gtexportal.org/home/gene/ENSG00000204370",
+  "uniprot": "https://www.uniprot.org/uniprotkb/O14521/entry",
+  "decipher": "https://www.deciphergenomics.org/sequence-variant/11-112087903-AT-A",
+  "clinvar": "https://www.ncbi.nlm.nih.gov/clinvar/?term=NC_000011.10:g.112087906del",
+  "hgnc": "https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:10683",
+  "ucsc": "https://genome.cse.ucsc.edu/cgi-bin/hgGene?hgg_gene=uc001pmz.5",
+  "gnomad": "https://gnomad.broadinstitute.org/variant/11-112087903-AT-A?dataset=gnomad_r4",
+  "stringdb": "https://string-db.org/cgi/network?identifiers=SDHD"
+}
