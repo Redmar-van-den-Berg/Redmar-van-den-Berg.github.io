@@ -155,7 +155,7 @@
           <h2>Home page</h2>
           <p>Welcome to the Genetic Therapy Generator Toolkit, please specify a variant below:</p>
           <div class="field border round small">
-            <input id="test" type="text" autofocus>
+            <input id="test" type="text" {{'value=' + variant if variant else ''}} autofocus>
             <button class="center" type="button" onclick="redirect()">Submit</button>
           </div>
         </div>
