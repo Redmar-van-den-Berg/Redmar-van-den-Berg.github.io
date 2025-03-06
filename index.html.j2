@@ -132,14 +132,18 @@
 
     <main class="responsive">
 
-      <div id="home" class="page padding">
+      {% if results is defined %}
+        <div id="home" class="page padding">
+      {% else %}
+        <div id="home" class="page padding active">
+      {% endif %}
         <h2>Home page</h2>
         <p>TODO: Put the submit button here</p>
       </div>
 
-      <div id="analysis" class="page padding active">
-        <h2> Analysis results for {{ variant }}</h2>
-        {% if results is defined %}
+      {% if results is defined %}
+        <div id="analysis" class="page padding active">
+          <h2> Analysis results for {{ variant }}</h2>
           {% for name in results %}
             <article>
               <details>
@@ -173,10 +177,13 @@
               </details>
             </article>
           {% endfor %}
-        {% else %}
+        </div>
+      {% else %}
+        <div id="analysis" class="page padding">
+          <h2> Analysis results for {{ variant }}</h2>
           Please specify a variant to analyze.
-        {% endif %}
-      </div>
+        </div>
+      {% endif %}
 
       <div id="external-resources" class="page padding">
         <h2>External resources</h2>
