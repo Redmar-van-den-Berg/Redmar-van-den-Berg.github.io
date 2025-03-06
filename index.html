@@ -4,12 +4,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
-    <title>GTGT analsys results for ENST00000375549.8:c.100del</title>
+    <title>GTGT analysis results for ENST00000375549.8:c.100del</title>
     <link href="https://cdn.jsdelivr.net/npm/beercss@3.9.6/dist/cdn/beer.min.css" rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.9.6/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script type="text/javascript">
-      function myFunction() {
+      <!-- function myFunction() { -->
         // set all additional sections (help, github, disclaimer) to active
         let sections = ['disclaimer', 'documentation', 'github'];
         for (index in sections) {
@@ -35,6 +35,21 @@
           }
       }
     </script>
+    <script>
+      function redirect()
+      {
+        var url = document.getElementById('test').value
+        window.location = url
+      }
+
+      // Also trigger submit when the user presses enter in the text field
+      document.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) { //13 is enter}
+          event.preventDefault();
+          redirect();
+        }
+      });
+    </script>
   </head>
   <body>
     <nav class="left drawer l">
@@ -44,6 +59,10 @@
           <h6>GTGT</h6>
         </nav>
       </header>
+      <a data-ui="#home">
+        <i>home</i>
+        <div>Home</div>
+      </a>
       <a data-ui="#analysis">
         <i>genetics</i>
         <div>Analysis</div>
@@ -73,6 +92,10 @@
     </nav>
 
     <nav class="left m">
+      <a data-ui="#home">
+        <i>home</i>
+        <div>Home</div>
+      </a>
       <a data-ui="#analysis">
         <i>genetics</i>
         <div>Analysis</div>
@@ -101,6 +124,9 @@
     </nav>
 
     <nav class="bottom s">
+      <a data-ui="#home">
+        <i>home</i>
+      </a>
       <a data-ui="#analysis">
         <i>genetics</i>
       </a>
@@ -117,290 +143,305 @@
 
     <main class="responsive">
 
-      <div id="analysis" class="page padding active">
-        <h2> Analysis results for ENST00000375549.8:c.100del</h2>
-        
-          <article>
-            <details>
-              <summary class="none">
-                <div class="row">
-                  <div class="max">
-                    <h3>wildtype</h3>
+      
+        <div id="home" class="page padding">
+      
+          <h2>Home page</h2>
+          <p>Welcome to the Genetic Therapy Generator Toolkit, please specify a variant below:</p>
+          <div class="field border round small">
+            <input id="test" type="text" value=ENST00000375549.8:c.100del autofocus>
+            <button class="center" type="button" onclick="redirect()">Submit</button>
+          </div>
+        </div>
+
+      
+        <div id="analysis" class="page padding active">
+          <h2> Analysis results for ENST00000375549.8:c.100del</h2>
+          
+            <article>
+              <details>
+                <summary class="none">
+                  <div class="row">
+                    <div class="max">
+                      <h3>wildtype</h3>
+                    </div>
+                    <i>arrow_drop_down</i>
                   </div>
-                  <i>arrow_drop_down</i>
-                </div>
-              </summary>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Annotation</th>
-                    <th>Remaining</th>
-                    <th>Percentage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  
-                  <tr>
-                    <td>ENST00000375549.8</td>
-                    <td>100.0% </td>
-                    <td><progress value="100.0" max="100"></progress></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td>cds</td>
-                    <td>100.0% </td>
-                    <td><progress value="100.0" max="100"></progress></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td>coding</td>
-                    <td>100.0% </td>
-                    <td><progress value="100.0" max="100"></progress></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </details>
-          </article>
-        
-          <article>
-            <details>
-              <summary class="none">
-                <div class="row">
-                  <div class="max">
-                    <h3>ENST00000375549.8:c.53_169del</h3>
+                </summary>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Annotation</th>
+                      <th>Remaining</th>
+                      <th>Percentage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    
+                    <tr>
+                      <td>ENST00000375549.8</td>
+                      <td>100.0% </td>
+                      <td><progress value="100.0" max="100"></progress></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                      <td>cds</td>
+                      <td>100.0% </td>
+                      <td><progress value="100.0" max="100"></progress></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                      <td>coding</td>
+                      <td>100.0% </td>
+                      <td><progress value="100.0" max="100"></progress></td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </details>
+            </article>
+          
+            <article>
+              <details>
+                <summary class="none">
+                  <div class="row">
+                    <div class="max">
+                      <h3>ENST00000375549.8:c.53_169del</h3>
+                    </div>
+                    <i>arrow_drop_down</i>
                   </div>
-                  <i>arrow_drop_down</i>
-                </div>
-              </summary>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Annotation</th>
-                    <th>Remaining</th>
-                    <th>Percentage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  
-                  <tr>
-                    <td>ENST00000375549.8</td>
-                    <td>91.3% </td>
-                    <td><progress value="91.3" max="100"></progress></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td>cds</td>
-                    <td>87.5% </td>
-                    <td><progress value="87.5" max="100"></progress></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td>coding</td>
-                    <td>75.6% </td>
-                    <td><progress value="75.6" max="100"></progress></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </details>
-          </article>
-        
-          <article>
-            <details>
-              <summary class="none">
-                <div class="row">
-                  <div class="max">
-                    <h3>patient</h3>
+                </summary>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Annotation</th>
+                      <th>Remaining</th>
+                      <th>Percentage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    
+                    <tr>
+                      <td>ENST00000375549.8</td>
+                      <td>91.3% </td>
+                      <td><progress value="91.3" max="100"></progress></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                      <td>cds</td>
+                      <td>87.5% </td>
+                      <td><progress value="87.5" max="100"></progress></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                      <td>coding</td>
+                      <td>75.6% </td>
+                      <td><progress value="75.6" max="100"></progress></td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </details>
+            </article>
+          
+            <article>
+              <details>
+                <summary class="none">
+                  <div class="row">
+                    <div class="max">
+                      <h3>patient</h3>
+                    </div>
+                    <i>arrow_drop_down</i>
                   </div>
-                  <i>arrow_drop_down</i>
-                </div>
-              </summary>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Annotation</th>
-                    <th>Remaining</th>
-                    <th>Percentage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  
-                  <tr>
-                    <td>ENST00000375549.8</td>
-                    <td>71.8% </td>
-                    <td><progress value="71.8" max="100"></progress></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td>cds</td>
-                    <td>12.4% </td>
-                    <td><progress value="12.4" max="100"></progress></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td>coding</td>
-                    <td>21.2% </td>
-                    <td><progress value="21.2" max="100"></progress></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </details>
-          </article>
-        
-          <article>
-            <details>
-              <summary class="none">
-                <div class="row">
-                  <div class="max">
-                    <h3>ENST00000375549.8:c.170_314del</h3>
+                </summary>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Annotation</th>
+                      <th>Remaining</th>
+                      <th>Percentage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    
+                    <tr>
+                      <td>ENST00000375549.8</td>
+                      <td>71.8% </td>
+                      <td><progress value="71.8" max="100"></progress></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                      <td>cds</td>
+                      <td>12.4% </td>
+                      <td><progress value="12.4" max="100"></progress></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                      <td>coding</td>
+                      <td>21.2% </td>
+                      <td><progress value="21.2" max="100"></progress></td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </details>
+            </article>
+          
+            <article>
+              <details>
+                <summary class="none">
+                  <div class="row">
+                    <div class="max">
+                      <h3>ENST00000375549.8:c.170_314del</h3>
+                    </div>
+                    <i>arrow_drop_down</i>
                   </div>
-                  <i>arrow_drop_down</i>
-                </div>
-              </summary>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Annotation</th>
-                    <th>Remaining</th>
-                    <th>Percentage</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  
-                  
-                  <tr>
-                    <td>ENST00000375549.8</td>
-                    <td>71.8% </td>
-                    <td><progress value="71.8" max="100"></progress></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td>cds</td>
-                    <td>12.4% </td>
-                    <td><progress value="12.4" max="100"></progress></td>
-                  </tr>
-                  
-                  
-                  <tr>
-                    <td>coding</td>
-                    <td>21.2% </td>
-                    <td><progress value="21.2" max="100"></progress></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-            </details>
-          </article>
-        
-      </div>
+                </summary>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Annotation</th>
+                      <th>Remaining</th>
+                      <th>Percentage</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    
+                    
+                    <tr>
+                      <td>ENST00000375549.8</td>
+                      <td>71.8% </td>
+                      <td><progress value="71.8" max="100"></progress></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                      <td>cds</td>
+                      <td>12.4% </td>
+                      <td><progress value="12.4" max="100"></progress></td>
+                    </tr>
+                    
+                    
+                    <tr>
+                      <td>coding</td>
+                      <td>21.2% </td>
+                      <td><progress value="21.2" max="100"></progress></td>
+                    </tr>
+                    
+                  </tbody>
+                </table>
+              </details>
+            </article>
+          
+        </div>
+      
 
       <div id="external-resources" class="page padding">
         <h2>External resources</h2>
-        <div class="grid">
-          
-            <div class="s12 m6 l3">
-              <a href=https://www.omim.org/entry/602690 target="_blank">
-                <article>
-                  <h5>OMIM_1</h5>
-                  <p>This is a description of the omim_1 database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://databases.lovd.nl/shared/genes/SDHD target="_blank">
-                <article>
-                  <h5>LOVD</h5>
-                  <p>This is a description of the lovd database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://gtexportal.org/home/gene/ENSG00000204370 target="_blank">
-                <article>
-                  <h5>GTEX</h5>
-                  <p>This is a description of the gtex database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://www.uniprot.org/uniprotkb/O14521/entry target="_blank">
-                <article>
-                  <h5>UNIPROT</h5>
-                  <p>This is a description of the uniprot database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://www.deciphergenomics.org/sequence-variant/11-112087903-AT-A target="_blank">
-                <article>
-                  <h5>DECIPHER</h5>
-                  <p>This is a description of the decipher database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://www.ncbi.nlm.nih.gov/clinvar/?term=NC_000011.10:g.112087906del target="_blank">
-                <article>
-                  <h5>CLINVAR</h5>
-                  <p>This is a description of the clinvar database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:10683 target="_blank">
-                <article>
-                  <h5>HGNC</h5>
-                  <p>This is a description of the hgnc database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://genome.cse.ucsc.edu/cgi-bin/hgGene?hgg_gene=uc001pmz.5 target="_blank">
-                <article>
-                  <h5>UCSC</h5>
-                  <p>This is a description of the ucsc database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://gnomad.broadinstitute.org/variant/11-112087903-AT-A?dataset=gnomad_r4 target="_blank">
-                <article>
-                  <h5>GNOMAD</h5>
-                  <p>This is a description of the gnomad database</p>
-                </article>
-              </a>
-            </div>
-          
-            <div class="s12 m6 l3">
-              <a href=https://string-db.org/cgi/network?identifiers=SDHD target="_blank">
-                <article>
-                  <h5>STRINGDB</h5>
-                  <p>This is a description of the stringdb database</p>
-                </article>
-              </a>
-            </div>
-          
-        </div>
+        
+          <div class="grid">
+            
+              <div class="s12 m6 l3">
+                <a href=https://www.omim.org/entry/602690 target="_blank">
+                  <article>
+                    <h5>OMIM_1</h5>
+                    <p>This is a description of the omim_1 database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://databases.lovd.nl/shared/genes/SDHD target="_blank">
+                  <article>
+                    <h5>LOVD</h5>
+                    <p>This is a description of the lovd database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://gtexportal.org/home/gene/ENSG00000204370 target="_blank">
+                  <article>
+                    <h5>GTEX</h5>
+                    <p>This is a description of the gtex database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://www.uniprot.org/uniprotkb/O14521/entry target="_blank">
+                  <article>
+                    <h5>UNIPROT</h5>
+                    <p>This is a description of the uniprot database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://www.deciphergenomics.org/sequence-variant/11-112087903-AT-A target="_blank">
+                  <article>
+                    <h5>DECIPHER</h5>
+                    <p>This is a description of the decipher database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://www.ncbi.nlm.nih.gov/clinvar/?term=NC_000011.10:g.112087906del target="_blank">
+                  <article>
+                    <h5>CLINVAR</h5>
+                    <p>This is a description of the clinvar database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:10683 target="_blank">
+                  <article>
+                    <h5>HGNC</h5>
+                    <p>This is a description of the hgnc database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://genome.cse.ucsc.edu/cgi-bin/hgGene?hgg_gene=uc001pmz.5 target="_blank">
+                  <article>
+                    <h5>UCSC</h5>
+                    <p>This is a description of the ucsc database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://gnomad.broadinstitute.org/variant/11-112087903-AT-A?dataset=gnomad_r4 target="_blank">
+                  <article>
+                    <h5>GNOMAD</h5>
+                    <p>This is a description of the gnomad database</p>
+                  </article>
+                </a>
+              </div>
+            
+              <div class="s12 m6 l3">
+                <a href=https://string-db.org/cgi/network?identifiers=SDHD target="_blank">
+                  <article>
+                    <h5>STRINGDB</h5>
+                    <p>This is a description of the stringdb database</p>
+                  </article>
+                </a>
+              </div>
+            
+          </div>
+        
       </div>
 
       <div id="export-report" class="page padding">
