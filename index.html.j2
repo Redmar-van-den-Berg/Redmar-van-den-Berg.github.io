@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google" content="notranslate">
-    <title>GTGT analsys results for ENST00000375549.8:c.100del</title>
+    <title>GTGT analsys results for {{ variant }}</title>
     <link href="https://cdn.jsdelivr.net/npm/beercss@3.9.6/dist/cdn/beer.min.css" rel="stylesheet">
     <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.9.6/dist/cdn/beer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
@@ -118,7 +118,7 @@
     <main class="responsive">
 
       <div id="analysis" class="page padding active">
-        <h2> Analysis results</h2>
+        <h2> Analysis results for {{ variant }}</h2>
         {% for name in results %}
           <article>
             <details>
@@ -157,43 +157,16 @@
       <div id="external-resources" class="page padding">
         <h2>External resources</h2>
         <div class="grid">
-
-          <div class="s12 m6 l3">
-            <a href="https://databases.lovd.nl/shared/genes/NPM1" target="_blank">
-              <article>
-                <h5>LOVD</h5>
-                <p>This is a description of the LOVD database</p>
-              </article>
-            </a>
-          </div>
-
-          <div class="s12 m6 l3">
-            <a href="https://www.omim.org/entry/164040" target="_blank">
-              <article>
-                <h5>OMIM 1</h5>
-                <p>This is a description of the MOMIM database</p>
-              </article>
-            </a>
-          </div>
-
-          <div class="s12 m6 l3">
-            <a href="https://www.deciphergenomics.org/sequence-variant/5-171410539-C-CTCTG" target="_blank">
-              <article>
-                <h5>Decipher</h5>
-                <p>This is a description of the Decipher database</p>
-              </article>
-            </a>
-          </div>
-
-          <div class="s12 m6 l3">
-            <a href="https://www.ncbi.nlm.nih.gov/clinvar/?term=NC_000005.10:g.171410540_171410543dup" target="_blank">
-              <article>
-                <h5>ClinVar</h5>
-                <p>This is a description of the ClinVar database</p>
-              </article>
-            </a>
-          </div>
-
+          {% for dbname, link in links.items() %}
+            <div class="s12 m6 l3">
+              <a href={{ link }} target="_blank">
+                <article>
+                  <h5>{{ dbname | upper}}</h5>
+                  <p>This is a description of the {{ dbname }} database</p>
+                </article>
+              </a>
+            </div>
+          {% endfor %}
         </div>
       </div>
 
