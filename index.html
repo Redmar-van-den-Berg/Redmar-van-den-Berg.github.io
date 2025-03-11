@@ -10,18 +10,18 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
     <script type="text/javascript">
       function activate_info() {
-        // set all additional sections (help, github, disclaimer) to active
-        let sections = ['disclaimer', 'documentation', 'github'];
-        for (index in sections) {
-          let element = document.getElementById(sections[index]);
-          element.classList.add('active');
+        // set all pages to inactive
+        let pages = Array.from(document.getElementsByClassName('page'))
+        for (index in pages) {
+          let element = pages[index];
+          element.classList.remove('active');
         }
 
-        // set all other sections to inactive
-        sections = ['analysis', 'external-resources', 'export-report']
-        for (index in sections) {
-          let element = document.getElementById(sections[index]);
-          element.classList.remove('active');
+        // set all information pages (help, github, disclaimer) to active
+        let page_names = ['disclaimer', 'documentation', 'github'];
+        for (index in page_names) {
+          let element = document.getElementById(page_names[index]);
+          element.classList.add('active');
         }
 
         // unset the selected color from the nav menu
@@ -29,9 +29,6 @@
           for (index in nav_elements) {
             let element = nav_elements[index];
             element.classList.remove('active');
-            //if ("class" in element) {
-            //  element.classList.remove('active');
-            //}
           }
       }
     </script>
@@ -39,7 +36,7 @@
       function redirect()
       {
         var url = document.getElementById('test').value
-        window.location = url
+        window.location = "/" + url
       }
 
       // Also trigger submit when the user presses enter in the text field
@@ -60,8 +57,8 @@
         </nav>
       </header>
       <a data-ui="#home">
-        <i>home</i>
-        <div>Home</div>
+        <i>search</i>
+        <div>Search</div>
       </a>
       <a data-ui="#analysis">
         <i>genetics</i>
@@ -93,8 +90,8 @@
 
     <nav class="left m">
       <a data-ui="#home">
-        <i>home</i>
-        <div>Home</div>
+        <i>search</i>
+        <div>Search</div>
       </a>
       <a data-ui="#analysis">
         <i>genetics</i>
@@ -125,7 +122,7 @@
 
     <nav class="bottom s">
       <a data-ui="#home">
-        <i>home</i>
+        <i>search</i>
       </a>
       <a data-ui="#analysis">
         <i>genetics</i>
@@ -146,7 +143,7 @@
       
         <div id="home" class="page padding">
       
-          <h2>Home page</h2>
+          <h2>Specify variant</h2>
           <p>Welcome to the Genetic Therapy Generator Toolkit, please specify a variant below:</p>
           <div class="field border round small">
             <input id="test" type="text" value=ENST00000375549.8:c.100del autofocus>
