@@ -11,13 +11,15 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--empty', default=False, action='store_true')
     parser.add_argument('--template', default="index.html.j2")
+    parser.add_argument("--payload", default=payload_file)
+    parser.add_argument("--links", default=external_links_file)
 
     args = parser.parse_args()
 
-    with open(payload_file) as fin:
+    with open(args.payload) as fin:
         payload = json.load(fin)
 
-    with open(external_links_file) as fin:
+    with open(args.links) as fin:
         links = json.load(fin)
 
     template_folder = os.path.dirname(args.template)
