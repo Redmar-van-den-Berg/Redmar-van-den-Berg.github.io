@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JBrowse Linear Genome View</title>
+
+    <script
+      src="react-linear-genome-view.umd.production.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <div id="jbrowse_linear_genome_view"></div>
+
+    <script>
+      const { React, createRoot, createViewState, JBrowseLinearGenomeView } =
+        JBrowseReactLinearGenomeView
+
+      const state = new createViewState({
+        assembly: {
+          name: 'hg38',
+          sequence: {
+            type: 'ReferenceSequenceTrack',
+            trackId: 'GRCh38-ReferenceSequenceTrack',
+            adapter: {
+              type: 'BgzipFastaAdapter',
+              uri: 'https://jbrowse.org/genomes/GRCh38/fasta/hg38.prefix.fa.gz',
+            },
+          },
+          refNameAliases: {
+            adapter: {
+              type: 'RefNameAliasAdapter',
+              uri: 'https://jbrowse.org/genomes/GRCh38/hg38_aliases.txt',
+            },
+          },
+          cytobands: {
+            adapter: {
+              type: 'CytobandAdapter',
+              uri: 'https://jbrowse.org/genomes/GRCh38/cytoBand.txt',
+            },
+          },
+        },
+        tracks: [
+          {
+            type: 'FeatureTrack',
+            trackId: 'GCA_DMD_minimal',
+            name: 'jbrowse GCA file grep DMD minimal',
+            assemblyNames: ['hg38'],
+            adapter: {
+              type: 'Gff3Adapter',
+              uri: 'DMD/GCA_DMD_min.gff'
+            }
+          },
+          {
+            type: 'FeatureTrack',
+            trackId: 'DMD_bed',
+            name: 'Wildtype',
+            assemblyNames: ['hg38'],
+            adapter: {
+              type: 'BedAdapter',
+              uri: 'DMD/DMD.wt.bed'
+            },
+            displays: [
+              {
+              type: 'LinearBasicDisplay',
+              height: 350
+              }
+            ]
+          },{
+            type: 'FeatureTrack',
+            trackId: 'DMD_del_bed',
+            name: 'DMD 2500del',
+            assemblyNames: ['hg38'],
+            adapter: {
+              type: 'BedAdapter',
+              uri: 'DMD/DMD.del.bed'
+            },
+            displays: [
+              {
+              type: 'LinearBasicDisplay',
+              height: 350
+              }
+            ]
+          },{
+            type: 'FeatureTrack',
+            trackId: 'DMD_del2500_skip19_20',
+            name: 'Skip exons 19 and 20',
+            assemblyNames: ['hg38'],
+            adapter: {
+              type: 'BedAdapter',
+              uri: 'DMD/DMD.skip19_20.bed'
+            },
+            displays: [
+              {
+              type: 'LinearBasicDisplay',
+              height: 350
+              }
+            ]
+          },{
+            type: 'FeatureTrack',
+            trackId: 'DMD_del2500_skip20_21',
+            name: 'Skip exons 20 and 21',
+            assemblyNames: ['hg38'],
+            adapter: {
+              type: 'BedAdapter',
+              uri: 'DMD/DMD.skip20_21.bed'
+            },
+            displays: [
+              {
+              type: 'LinearBasicDisplay',
+              height: 350
+              }
+            ]
+          },
+          {
+            type: 'FeatureTrack',
+            trackId: 'ClinVar',
+            name: 'ClinVar',
+            assemblyNames: ['hg38'],
+            adapter: {
+              type: 'VcfTabixAdapter',
+              vcfGzLocation: {
+                uri:"https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz",
+                locationType: "UriLocation"
+              },
+              index: {
+                location: {
+                  uri: "https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz.tbi",
+                  locationType: "UriLocation"
+                }
+              }
+            }
+          }
+        ],
+        defaultSession: {
+          name: 'My session',
+          view: {
+            id: 'linearGenomeView',
+            type: 'LinearGenomeView',
+            init: {
+              assembly: 'hg38',
+              loc: 'X:31119221..31121930 X:31126641..31126673 X:31134101..31134194 X:31146290..31146414 X:31147274..31147518 X:31169442..31169601 X:31172347..31172413 X:31173538..31173604 X:31177931..31177970 X:31178668..31178805 X:31180369..31180481 X:31182737..31182904 X:31203960..31204118 X:31206581..31206667 X:31209497..31209699 X:31223046..31223121 X:31260954..31261016 X:31323597..31323658 X:31348555..31348634 X:31444480..31444627 X:31478105..31478374 X:31478982..31479103 X:31496787..31496944 X:31507280..31507453 X:31627672..31627862 X:31657989..31658144 X:31679374..31679586 X:31729630..31729748 X:31773959..31774192 X:31819974..31820083 X:31836717..31836819 X:31875187..31875373 X:31929595..31929745 X:31932079..31932227 X:31968338..31968514 X:32216915..32217063 X:32287528..32287701 X:32310081..32310276 X:32342099..32342282 X:32343133..32343286 X:32345942..32346080 X:32348405..32348528 X:32362787..32362958 X:32364581..32364710 X:32365019..32365199 X:32380509..32380680 X:32386309..32386465 X:32389500..32389674 X:32390070..32390181 X:32411751..32411913 X:32438240..32438390 X:32441179..32441314 X:32448455..32448638 X:32454661..32454832 X:32463438..32463594 X:32464585..32464699 X:32468497..32468710 X:32472163..32472309 X:32484918..32485099 X:32491276..32491398 X:32491399..32491518 X:32501754..32501842 X:32518007..32518131 X:32545158..32545334 X:32565701..32565881 X:32573529..32573637 X:32573744..32573846 X:32595756..32595876 X:32614302..32614453 X:32644131..32644313 X:32644963..32645152 X:32697869..32697998 X:32699111..32699293 X:32809492..32809611 X:32816467..32816640 X:32823294..32823387 X:32844782..32844860 X:32849727..32849820 X:33020138..33020200 X:33211281..33211549',
+              tracks: ['DMD_bed', 'DMD_del_bed', 'DMD_del2500_skip19_20', 'DMD_del2500_skip20_21', 'ClinVar'],
+            },
+            "showGridlines": false,
+          },
+        },
+      })
+
+      const root = createRoot(
+        document.getElementById('jbrowse_linear_genome_view'),
+      )
+      root.render(
+        React.createElement(JBrowseLinearGenomeView, {
+          viewState: state,
+        }),
+      )
+    </script>
+  </body>
+</html>
