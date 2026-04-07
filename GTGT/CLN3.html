@@ -1,0 +1,2591 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="google" content="notranslate">
+  <title>GTGT analysis results for ENST00000636147.2:c.461_677del</title>
+  <link href="https://cdn.jsdelivr.net/npm/beercss@3.9.6/dist/cdn/beer.min.css" rel="stylesheet">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.9.6/dist/cdn/beer.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.2/dist/cdn/material-dynamic-colors.min.js"></script>
+  <script type="text/javascript">
+    function activate_info() {
+      // set all pages to inactive
+      let pages = Array.from(document.getElementsByClassName('page'))
+      for (index in pages) {
+        let element = pages[index];
+        element.classList.remove('active');
+      }
+
+      // set all information pages (help, development, disclaimer) to active
+      let page_names = ['disclaimer', 'documentation', 'development'];
+      for (index in page_names) {
+        let element = document.getElementById(page_names[index]);
+        element.classList.add('active');
+      }
+
+      // unset the selected color from the nav menu
+      let nav_elements = Array.from(document.querySelectorAll('nav a'));
+        for (index in nav_elements) {
+          let element = nav_elements[index];
+          element.classList.remove('active');
+        }
+    }
+  </script>
+  <script>
+    function redirect()
+    {
+      // Hide the submit button and show the spinner
+      document.getElementById('submitBtn').style.visibility='hidden';
+      document.getElementById('submitSpinner').style.visibility='visible';
+
+      // Redirect to the results page
+      var variant = document.getElementById('variant_input').value;
+      var protein_domains = document.getElementById('protein_domains').checked
+      var extended = document.getElementById('extended').checked
+      window.location = "/" + variant + "?" + "protein_domains=" + protein_domains + "&extended=" + extended;
+    }
+
+    function fillSearchField(value)
+    {
+      // Set the value in the text search field
+      document.getElementById('variant_input').value=value;
+      // Scroll to the top
+      window.scrollTo({top: 0, behaviour: 'smooth'})
+    }
+
+    // Also trigger submit when the user presses enter in the text field
+    document.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) { //13 is enter}
+        event.preventDefault();
+        redirect();
+      }
+    });
+  </script>
+</head>
+  <body>
+    <nav class="left drawer l">
+  <header>
+    <nav>
+      <img src="https://lirp.cdn-website.com/335a66d0/dms3rep/multi/opt/logo+small-1920w.png" class="circle" alt="DCRT logo">
+      <h5>GTGT</h5>
+    </nav>
+  </header>
+  <a data-ui="#home">
+    <i>search</i>
+    <div>Analysis</div>
+  </a>
+  <a data-ui="#results">
+    <i>genetics</i>
+    <div>Results</div>
+  </a>
+  <a data-ui="#external-resources">
+    <i>database</i>
+    <div>External resources</div>
+  </a>
+  <a data-ui="#export-report">
+    <i>picture_as_pdf</i>
+    <div>Export report</div>
+  </a>
+  <div class="divider"></div>
+  <label>Background</label>
+  <a data-ui="#documentation">
+    <i>description</i>
+    <div>Help</div>
+  </a>
+  <a data-ui="#development">
+    <i>terminal</i>
+    <div>Development</div>
+  </a>
+  <a data-ui="#disclaimer">
+    <i>copyright</i>
+    <div>Disclaimer</div>
+  </a>
+</nav>
+
+<nav class="left m">
+  <a data-ui="#home">
+    <i>search</i>
+    <div>Analysis</div>
+  </a>
+  <a data-ui="#results">
+    <i>genetics</i>
+    <div>Results</div>
+  </a>
+  <a data-ui="#external-resources">
+    <i>database</i>
+    <div>External resources</div>
+  </a>
+  <a data-ui="#export-report">
+    <i>picture_as_pdf</i>
+    <div>Export report</div>
+  </a>
+  <div class="divider"></div>
+  <a data-ui="#documentation">
+    <i>description</i>
+    <div>Help</div>
+  </a>
+  <a data-ui="#development">
+    <i>terminal</i>
+    <div>Development</div>
+  </a>
+  <a data-ui="#disclaimer">
+    <i>copyright</i>
+    <div>Disclaimer</div>
+  </a>
+</nav>
+
+<nav class="bottom s">
+  <a data-ui="#home">
+    <i>search</i>
+  </a>
+  <a data-ui="#results">
+    <i>genetics</i>
+  </a>
+  <a data-ui="#external-resources">
+    <i>database</i>
+  </a>
+  <a data-ui="#export-report">
+    <i>picture_as_pdf</i>
+  </a>
+  <a onclick="activate_info()">
+    <i>info</i>
+  </a>
+</nav>
+
+    <main class="responsive">
+      
+  <div id="home" class="page padding">
+
+    <h5>Analyze variant(s)</h5>
+    <p>
+    Welcome to the Genetic Therapy Generator Toolkit, please specify one or more variants in a single <a href="https://hgvs-nomenclature.org" class="link" target="_blank">HGVS description</a> below:
+    </p>
+    <div class="field border round small" style="margin-bottom:1em;">
+      <input id="variant_input" type="text" value="ENST00000636147.2:c.461_677del" autofocus>
+    </div>
+    <label class="checkbox">
+      <input type="checkbox" id="protein_domains">
+      <span>Include protein domains</span>
+    </label>
+    <label class="checkbox">
+      <input type="checkbox" id="extended">
+      <span>Show all evaluated therapies</span>
+    </label>
+    <div>
+      <progress id="submitSpinner" style="visibility:hidden"></progress>
+      <button id="submitBtn" class="center" type="button" onclick="redirect()" >Submit</button>
+    </div>
+
+    
+
+    <h5>Examples</h5>
+    <p>The input must be an allele in HGVS format, describing variants on an Ensembl transcript.
+    <table>
+      <thead>
+        <tr>
+          <th>Variant</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a class="link" onclick="fillSearchField('ENST00000375549.8:c.100del')">ENST00000375549.8:c.100del</a></td>
+          <td>Frameshift deletion in exon 2 of SHDH</td>
+        </tr>
+        <tr>
+          <td><a class="link" onclick="fillSearchField('NC_000023.11(NM_004006.3):c.2500del')">NC_000023.11(NM_004006.3):c.2500del</a></td>
+          <td>Frameshift deletion in exon 20 of DMD</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+      
+
+
+  <div id="results" class="page padding active">
+    <h2> Analysis results for ENST00000636147.2:c.461_677del</h2>
+    <p> GTGT analysis results for both the input variants and the wildtype version of the transcript. By definition, the <em>Remaining</em> percentage of the wildtype transcript is always 100%.</p>
+      
+        <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Input</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.461_677del">ENST00000636147.2:c.461_677del</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.461_677del">ENST00000636147.2:r.461_677del</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.(Gly154AlafsTer29)">ENST00000636147.2(ENSP00000490105):p.(Gly154AlafsTer29)</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied input variants.
+      
+        <h6>Transcript visualization</h6>
+        Visualization of the input variants and exons (with reading frames), generated with <a href="https://exonviz.rnatherapy.nl" class="link" target="_blank">ExonViz</a>.
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 702.5 160"><rect x="20" y="25.0" width="55" height="10.0" fill="#4C72B7"/><text class="exonnr" x="47.5" y="30.0">1</text><rect x="80.0" y="25.0" width="77" height="10.0" fill="#4C72B7"/><polygon points="156.0 40 156.0 20 197.0 20 202.0 30.0 197.0 40" fill="#4C72B7"/><text class="exonnr" x="141.0" y="30.0">2</text><polygon points="202.0 40 207.0 30.0 202.0 20 276.0 20 281.0 20 276.0 30.0 281.0 40 276.0 40" fill="#4C72B7"/><text class="exonnr" x="241.5" y="30.0">3</text><polygon points="286.0 40 281.0 30.0 286.0 20 378.0 20 378.0 40" fill="#4C72B7"/><text class="exonnr" x="329.5" y="30.0">4</text><polygon points="383.0 40 383.0 20 455.0 20 455.0 40" fill="#4C72B7"/><text class="exonnr" x="419.0" y="30.0">5</text><polygon points="460.0 40 460.0 20 535.0 20 540.0 20 535.0 30.0 540.0 40 535.0 40" fill="#4C72B7"/><text class="exonnr" x="500.0" y="30.0">6</text><polygon points="545.0 40 540.0 30.0 545.0 20 621.0 20 626.0 30.0 621.0 40" fill="#4C72B7"/><text class="exonnr" x="583.0" y="30.0">7</text><polygon points="626.0 40 631.0 30.0 626.0 20 694.0 20 699.0 20 694.0 30.0 699.0 40 694.0 40" fill="#4C72B7"/><rect x="626.0" y="10.0" width="1" height="30.0" fill="#BA1C30"/><circle stroke="#BA1C30" cx="626.5" cy="10.0" r="5.0" fill="#BA1C30"/><text class="exonnr" x="662.5" y="30.0">8</text><polygon points="25.0 80 20 70.0 25.0 60 159.0 60 164 60 159.0 70.0 164 80 159.0 80" fill="#4C72B7"/><text class="exonnr" x="92.0" y="70.0">9</text><polygon points="169.0 80 164 70.0 169.0 60 272.0 60 277 70.0 272.0 80" fill="#4C72B7"/><text class="exonnr" x="220.5" y="70.0">10</text><polygon points="277 80 282.0 70.0 277 60 324 60 324 80" fill="#4C72B7"/><text class="exonnr" x="300.5" y="70.0">11</text><polygon points="329.0 80 329.0 60 398.0 60 398.0 80" fill="#4C72B7"/><text class="exonnr" x="363.5" y="70.0">12</text><polygon points="403.0 80 403.0 60 454.0 60 459.0 60 454.0 70.0 459.0 80 454.0 80" fill="#4C72B7"/><text class="exonnr" x="431.0" y="70.0">13</text><polygon points="464.0 80 459.0 70.0 464.0 60 553.0 60 553.0 80" fill="#4C72B7"/><text class="exonnr" x="506.0" y="70.0">14</text><polygon points="558.0 80 558.0 60 699.0 60 699.0 80" fill="#4C72B7"/><text class="exonnr" x="628.5" y="70.0">15</text><rect x="139" y="105.0" width="238" height="10.0" fill="#4C72B7"/><polygon points="20 120 20 100 140 100 140 120" fill="#4C72B7"/><text class="exonnr" x="198.5" y="110.0">16</text><rect x="20" y="140" width="20" height="20" fill="#BA1C30"/><text class="legend" x="50.0" y="150.0">c.461_677del</text><style>
+.legend { font: 16.0px sans-serif; fill: black; dominant-baseline: central; }
+</style><style>
+.exonnr { text-anchor: middle; dominant-baseline: central; font: 10.0px sans-serif; fill: white;}
+</style></svg>
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>87.1% </td>
+              <td>1468/1685
+              <td><progress value="87.1" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>38.0% </td>
+              <td>501/1317
+              <td><progress value="38.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>56.7% </td>
+              <td>216/381
+              <td><progress value="56.7" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>propep: Removed in mature form</td>
+              <td>33.3% </td>
+              <td>3/9
+              <td><progress value="33.3" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif</td>
+              <td>0.0% </td>
+              <td>0/42
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+              <td>0.0% </td>
+              <td>0/6
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>modif: Cysteine methyl ester</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lipidation: S-farnesyl cysteine</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>glyco: N-linked (GlcNAc...) asparagine</td>
+              <td>66.7% </td>
+              <td>6/9
+              <td><progress value="66.7" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>37.9% </td>
+              <td>495/1305
+              <td><progress value="37.9" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>25.9% </td>
+              <td>144/555
+              <td><progress value="25.9" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>36.5% </td>
+              <td>138/378
+              <td><progress value="36.5" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Disordered: Disordered</td>
+              <td>47.4% </td>
+              <td>81/171
+              <td><progress value="47.4" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+      
+        <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Wildtype</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.=">ENST00000636147.2:c.=</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.=">ENST00000636147.2:r.=</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.(=)">ENST00000636147.2(ENSP00000490105):p.(=)</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>These are the annotations as defined on the reference. They are always 100% by definition.
+      
+
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>Exons</td>
+                  <td>100.0% </td>
+                  <td>1685/1685
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Coding exons</td>
+                  <td>100.0% </td>
+                  <td>1317/1317
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lumenal: Lumenal</td>
+                  <td>100.0% </td>
+                  <td>381/381
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>propep: Removed in mature form</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lysosomal targ...: Lysosomal targeting motif</td>
+                  <td>100.0% </td>
+                  <td>42/42
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>modif: Cysteine methyl ester</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lipidation: S-farnesyl cysteine</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>glyco: N-linked (GlcNAc...) asparagine</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>BTS</td>
+                  <td>100.0% </td>
+                  <td>1305/1305
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Cytoplasmic: Cytoplasmic</td>
+                  <td>100.0% </td>
+                  <td>555/555
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Transmembrane: Helical</td>
+                  <td>100.0% </td>
+                  <td>378/378
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Disordered: Disordered</td>
+                  <td>100.0% </td>
+                  <td>171/171
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+      
+    <h2>Variant-modifying therapies</h2>
+    <p>This section contains analysis results for therapies which directly modify or remove the specified input variants.</p>
+    
+    <h2>Other therapies</h2>
+    <p>This section contains therapies which do not directly change any of the specified input variants.</p>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exon 7</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[375_460del;461_677del]">ENST00000636147.2:c.[375_460del;461_677del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[375_460del;461_677del]">ENST00000636147.2:r.[375_460del;461_677del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.(Pro126_Ser226del)">ENST00000636147.2(ENSP00000490105):p.(Pro126_Ser226del)</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exon 7.
+ Exon 7 is a Resilient exon (median PSI=100.0, sd=1.8). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>82.0% </td>
+              <td>1382/1685
+              <td><progress value="82.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>76.9% </td>
+              <td>1013/1317
+              <td><progress value="76.9" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>90.3% </td>
+              <td>344/381
+              <td><progress value="90.3" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>76.7% </td>
+              <td>1001/1305
+              <td><progress value="76.7" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>85.9% </td>
+              <td>477/555
+              <td><progress value="85.9" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>50.0% </td>
+              <td>189/378
+              <td><progress value="50.0" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>propep: Removed in mature form</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lysosomal targ...: Lysosomal targeting motif</td>
+                  <td>100.0% </td>
+                  <td>42/42
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>modif: Cysteine methyl ester</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lipidation: S-farnesyl cysteine</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>glyco: N-linked (GlcNAc...) asparagine</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Disordered: Disordered</td>
+                  <td>100.0% </td>
+                  <td>171/171
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exon 6</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[295_374del;461_677del]">ENST00000636147.2:c.[295_374del;461_677del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[295_374del;461_677del]">ENST00000636147.2:r.[295_374del;461_677del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.(Ala99_Ser226delinsProProGlySerArgGlnTrpAspLeuCysCysTrpLysLeuArgProGlyCysLeuPheSerPheCysGlyAspGlnProValCys)">ENST00000636147.2(ENSP00000490105):p.(Ala99_Ser226delinsProProGlySerArgGlnTrpAspLeuCysCysTrpLysLeuArgProGlyCysLeuPheSerPheCysGlyAspGlnProValCys)</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exon 6.
+ Exon 6 is a Vulnerable exon (median PSI=96.2, sd=5.2). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>82.4% </td>
+              <td>1388/1685
+              <td><progress value="82.4" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>72.1% </td>
+              <td>949/1317
+              <td><progress value="72.1" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>70.3% </td>
+              <td>268/381
+              <td><progress value="70.3" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>71.8% </td>
+              <td>937/1305
+              <td><progress value="71.8" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>86.5% </td>
+              <td>480/555
+              <td><progress value="86.5" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>52.4% </td>
+              <td>198/378
+              <td><progress value="52.4" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>propep: Removed in mature form</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lysosomal targ...: Lysosomal targeting motif</td>
+                  <td>100.0% </td>
+                  <td>42/42
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>modif: Cysteine methyl ester</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lipidation: S-farnesyl cysteine</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>glyco: N-linked (GlcNAc...) asparagine</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Disordered: Disordered</td>
+                  <td>100.0% </td>
+                  <td>171/171
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exons 5 and 6</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[223_374del;461_677del]">ENST00000636147.2:c.[223_374del;461_677del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[223_374del;461_677del]">ENST00000636147.2:r.[223_374del;461_677del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.(Val75_Ser226delinsProProGlySerArgGlnTrpAspLeuCysCysTrpLysLeuArgProGlyCysLeuPheSerPheCysGlyAspGlnProValCys)">ENST00000636147.2(ENSP00000490105):p.(Val75_Ser226delinsProProGlySerArgGlnTrpAspLeuCysCysTrpLysLeuArgProGlyCysLeuPheSerPheCysGlyAspGlnProValCys)</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exons 5 and 6.
+ Exon 5 is a Vulnerable exon (median PSI=96.2, sd=5.2). Exon 6 is a Vulnerable exon (median PSI=97.8, sd=3.6). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>78.1% </td>
+              <td>1316/1685
+              <td><progress value="78.1" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>66.6% </td>
+              <td>877/1317
+              <td><progress value="66.6" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>50.4% </td>
+              <td>192/381
+              <td><progress value="50.4" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>glyco: N-linked (GlcNAc...) asparagine</td>
+              <td>66.7% </td>
+              <td>6/9
+              <td><progress value="66.7" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>66.3% </td>
+              <td>865/1305
+              <td><progress value="66.3" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>85.9% </td>
+              <td>477/555
+              <td><progress value="85.9" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>54.2% </td>
+              <td>205/378
+              <td><progress value="54.2" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>propep: Removed in mature form</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lysosomal targ...: Lysosomal targeting motif</td>
+                  <td>100.0% </td>
+                  <td>42/42
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>modif: Cysteine methyl ester</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lipidation: S-farnesyl cysteine</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Disordered: Disordered</td>
+                  <td>100.0% </td>
+                  <td>171/171
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exon 10</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[461_677del;678_790del]">ENST00000636147.2:c.[461_677del;678_790del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[461_677del;678_790del]">ENST00000636147.2:r.[461_677del;678_790del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.(Val155_Gly264del)">ENST00000636147.2(ENSP00000490105):p.(Val155_Gly264del)</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exon 10.
+ Exon 10 is a Resilient exon (median PSI=100.0, sd=1.3). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>80.4% </td>
+              <td>1355/1685
+              <td><progress value="80.4" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>74.8% </td>
+              <td>985/1317
+              <td><progress value="74.8" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>92.1% </td>
+              <td>351/381
+              <td><progress value="92.1" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif</td>
+              <td>78.6% </td>
+              <td>33/42
+              <td><progress value="78.6" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+              <td>0.0% </td>
+              <td>0/6
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>74.6% </td>
+              <td>973/1305
+              <td><progress value="74.6" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>67.0% </td>
+              <td>372/555
+              <td><progress value="67.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>68.5% </td>
+              <td>259/378
+              <td><progress value="68.5" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Disordered: Disordered</td>
+              <td>50.9% </td>
+              <td>87/171
+              <td><progress value="50.9" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>propep: Removed in mature form</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>modif: Cysteine methyl ester</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>Lipidation: S-farnesyl cysteine</td>
+                  <td>100.0% </td>
+                  <td>3/3
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>glyco: N-linked (GlcNAc...) asparagine</td>
+                  <td>100.0% </td>
+                  <td>9/9
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exons 10 and 11</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[461_677del;678_837del]">ENST00000636147.2:c.[461_677del;678_837del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[461_677del;678_837del]">ENST00000636147.2:r.[461_677del;678_837del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.Val155_Ser438delinsSerAlaValValHisCysSerLeuGlyArgSerLeuLeuCysArgValPheHis">ENST00000636147.2(ENSP00000490105):p.Val155_Ser438delinsSerAlaValValHisCysSerLeuGlyArgSerLeuLeuCysArgValPheHis</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exons 10 and 11.
+ Exon 10 is a Resilient exon (median PSI=100.0, sd=1.2). Exon 11 is a Resilient exon (median PSI=100.0, sd=1.3). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>77.6% </td>
+              <td>1308/1685
+              <td><progress value="77.6" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>36.3% </td>
+              <td>478/1317
+              <td><progress value="36.3" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>55.9% </td>
+              <td>213/381
+              <td><progress value="55.9" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>propep: Removed in mature form</td>
+              <td>0.0% </td>
+              <td>0/9
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif</td>
+              <td>0.0% </td>
+              <td>0/42
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+              <td>0.0% </td>
+              <td>0/6
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>modif: Cysteine methyl ester</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lipidation: S-farnesyl cysteine</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>glyco: N-linked (GlcNAc...) asparagine</td>
+              <td>66.7% </td>
+              <td>6/9
+              <td><progress value="66.7" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>36.4% </td>
+              <td>475/1305
+              <td><progress value="36.4" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>22.2% </td>
+              <td>123/555
+              <td><progress value="22.2" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>36.8% </td>
+              <td>139/378
+              <td><progress value="36.8" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Disordered: Disordered</td>
+              <td>43.9% </td>
+              <td>75/171
+              <td><progress value="43.9" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exon 4</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[126_222del;461_677del]">ENST00000636147.2:c.[126_222del;461_677del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[126_222del;461_677del]">ENST00000636147.2:r.[126_222del;461_677del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.Leu43_Leu437delinsTrpThrGlnAlaGlnArgArgSerProThrThrAlaHisHisAspLeuThrAlaThrLeuSerLeuArgLeuLeuCysSerTrpArgThrSerSerProHisSerSerSerAsnCysTrpLeuLeuLeuAlaPheThrCysCysProThrAlaProGlyPheSerSerValGlyPheValLeuLeuGluAlaSerSerTrpLeuProPheLeuIleLeuTrpGlyProAlaCysValLeuPheLeuValAlaHisIle">ENST00000636147.2(ENSP00000490105):p.Leu43_Leu437delinsTrpThrGlnAlaGlnArgArgSerProThrThrAlaHisHisAspLeuThrAlaThrLeuSerLeuArgLeuLeuCysSerTrpArgThrSerSerProHisSerSerSerAsnCysTrpLeuLeuLeuAlaPheThrCysCysProThrAlaProGlyPheSerSerValGlyPheValLeuLeuGluAlaSerSerTrpLeuProPheLeuIleLeuTrpGlyProAlaCysValLeuPheLeuValAlaHisIle</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exon 4.
+ Exon 4 is a Vulnerable exon (median PSI=100.0, sd=2.8). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>81.4% </td>
+              <td>1371/1685
+              <td><progress value="81.4" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>22.0% </td>
+              <td>290/1317
+              <td><progress value="22.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>18.9% </td>
+              <td>72/381
+              <td><progress value="18.9" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>propep: Removed in mature form</td>
+              <td>33.3% </td>
+              <td>3/9
+              <td><progress value="33.3" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif</td>
+              <td>0.0% </td>
+              <td>0/42
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+              <td>0.0% </td>
+              <td>0/6
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>modif: Cysteine methyl ester</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lipidation: S-farnesyl cysteine</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>glyco: N-linked (GlcNAc...) asparagine</td>
+              <td>0.0% </td>
+              <td>0/9
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>21.8% </td>
+              <td>284/1305
+              <td><progress value="21.8" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>29.2% </td>
+              <td>162/555
+              <td><progress value="29.2" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>14.0% </td>
+              <td>53/378
+              <td><progress value="14.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Disordered: Disordered</td>
+              <td>56.1% </td>
+              <td>96/171
+              <td><progress value="56.1" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exons 4 and 5</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[126_294del;461_677del]">ENST00000636147.2:c.[126_294del;461_677del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[126_294del;461_677del]">ENST00000636147.2:r.[126_294del;461_677del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.Leu44_Leu437delinsCysSerTrpArgThrSerSerProHisSerSerSerAsnCysTrpLeuLeuLeuAlaPheThrCysCysProThrAlaProGlyPheSerSerValGlyPheValLeuLeuGluAlaSerSerTrpLeuProPheLeuIleLeuTrpGlyProAlaCysValLeuPheLeuValAlaHisIle">ENST00000636147.2(ENSP00000490105):p.Leu44_Leu437delinsCysSerTrpArgThrSerSerProHisSerSerSerAsnCysTrpLeuLeuLeuAlaPheThrCysCysProThrAlaProGlyPheSerSerValGlyPheValLeuLeuGluAlaSerSerTrpLeuProPheLeuIleLeuTrpGlyProAlaCysValLeuPheLeuValAlaHisIle</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exons 4 and 5.
+ Exon 4 is a Vulnerable exon (median PSI=97.8, sd=3.6). Exon 5 is a Vulnerable exon (median PSI=100.0, sd=2.8). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>77.1% </td>
+              <td>1299/1685
+              <td><progress value="77.1" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>17.2% </td>
+              <td>227/1317
+              <td><progress value="17.2" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>7.1% </td>
+              <td>27/381
+              <td><progress value="7.1" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>propep: Removed in mature form</td>
+              <td>33.3% </td>
+              <td>3/9
+              <td><progress value="33.3" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif</td>
+              <td>0.0% </td>
+              <td>0/42
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+              <td>0.0% </td>
+              <td>0/6
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>modif: Cysteine methyl ester</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lipidation: S-farnesyl cysteine</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>glyco: N-linked (GlcNAc...) asparagine</td>
+              <td>0.0% </td>
+              <td>0/9
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>16.9% </td>
+              <td>221/1305
+              <td><progress value="16.9" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>28.1% </td>
+              <td>156/555
+              <td><progress value="28.1" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>10.8% </td>
+              <td>41/378
+              <td><progress value="10.8" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Disordered: Disordered</td>
+              <td>47.4% </td>
+              <td>81/171
+              <td><progress value="47.4" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>biased: Basic and acidic residues</td>
+                  <td>100.0% </td>
+                  <td>45/45
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+      
+        
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exons 3 and 4</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[47_222del;461_677del]">ENST00000636147.2:c.[47_222del;461_677del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[47_222del;461_677del]">ENST00000636147.2:r.[47_222del;461_677del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.(Glu17_Ser438delinsGlyProArgProAsnAlaAspProProGlnGlnLeuIleThrIle)">ENST00000636147.2(ENSP00000490105):p.(Glu17_Ser438delinsGlyProArgProAsnAlaAspProProGlnGlnLeuIleThrIle)</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exons 3 and 4.
+ Exon 3 is a Vulnerable exon (median PSI=100.0, sd=2.8). Exon 4 is a Vulnerable exon (median PSI=93.1, sd=6.5). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>76.7% </td>
+              <td>1292/1685
+              <td><progress value="76.7" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>4.6% </td>
+              <td>61/1317
+              <td><progress value="4.6" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>1.6% </td>
+              <td>6/381
+              <td><progress value="1.6" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>propep: Removed in mature form</td>
+              <td>0.0% </td>
+              <td>0/9
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif</td>
+              <td>0.0% </td>
+              <td>0/42
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+              <td>50.0% </td>
+              <td>3/6
+              <td><progress value="50.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>biased: Basic and acidic residues</td>
+              <td>42.2% </td>
+              <td>19/45
+              <td><progress value="42.2" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>modif: Cysteine methyl ester</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lipidation: S-farnesyl cysteine</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>glyco: N-linked (GlcNAc...) asparagine</td>
+              <td>0.0% </td>
+              <td>0/9
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>4.4% </td>
+              <td>58/1305
+              <td><progress value="4.4" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>9.4% </td>
+              <td>52/555
+              <td><progress value="9.4" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>0.0% </td>
+              <td>0/378
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Disordered: Disordered</td>
+              <td>28.7% </td>
+              <td>49/171
+              <td><progress value="28.7" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+      <article>
+    <details open>
+      <summary class="none">
+        <div class="row">
+          <div class="max">
+            <h5>Skip exon 3</h5>
+          </div>
+          <i>arrow_drop_down</i>
+        </div>
+      </summary>
+      <h6>Variant description</h6>
+      <p>DNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:c.[47_125del;461_677del]">ENST00000636147.2:c.[47_125del;461_677del]</a></p>
+      
+      <p>RNA: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2:r.[47_125del;461_677del]">ENST00000636147.2:r.[47_125del;461_677del]</a></p>
+      
+      
+      <p>Protein: <a class="link" target="_blank" href="https://mutalyzer.nl/normalizer/ENST00000636147.2(ENSP00000490105):p.Glu17_Ser438delinsCysTrpAlaPheAlaThrThrSerLeuMetTrp">ENST00000636147.2(ENSP00000490105):p.Glu17_Ser438delinsCysTrpAlaPheAlaThrThrSerLeuMetTrp</a></p>
+      
+      <h6>Therapy description</h6>
+      <p>The annotations based on the supplied variants, in combination with skipping exon 3.
+ Exon 3 is a Vulnerable exon (median PSI=93.1, sd=6.5). Please see https://vulexmap.compbio.sdu.dk/ for more details.
+      
+
+      
+        
+        
+          <h6>Changed annotations</h6>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+        
+          <tbody>
+            <tr>
+              <td>Exons</td>
+              <td>82.4% </td>
+              <td>1389/1685
+              <td><progress value="82.4" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Coding exons</td>
+              <td>5.8% </td>
+              <td>76/1317
+              <td><progress value="5.8" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lumenal: Lumenal</td>
+              <td>3.1% </td>
+              <td>12/381
+              <td><progress value="3.1" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>propep: Removed in mature form</td>
+              <td>0.0% </td>
+              <td>0/9
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif</td>
+              <td>0.0% </td>
+              <td>0/42
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lysosomal targ...: Lysosomal targeting motif. Required for AP1G1, AP2A2 and AP3D1 interaction</td>
+              <td>0.0% </td>
+              <td>0/6
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>biased: Basic and acidic residues</td>
+              <td>42.2% </td>
+              <td>19/45
+              <td><progress value="42.2" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>modif: Cysteine methyl ester</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Lipidation: S-farnesyl cysteine</td>
+              <td>0.0% </td>
+              <td>0/3
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>glyco: N-linked (GlcNAc...) asparagine</td>
+              <td>0.0% </td>
+              <td>0/9
+              <td><progress value="0.0" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>BTS</td>
+              <td>5.6% </td>
+              <td>73/1305
+              <td><progress value="5.6" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Cytoplasmic: Cytoplasmic</td>
+              <td>10.5% </td>
+              <td>58/555
+              <td><progress value="10.5" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Transmembrane: Helical</td>
+              <td>0.8% </td>
+              <td>3/378
+              <td><progress value="0.8" max="100"></progress></td>
+            </tr>
+      
+        
+        
+          <tbody>
+            <tr>
+              <td>Disordered: Disordered</td>
+              <td>28.7% </td>
+              <td>49/171
+              <td><progress value="28.7" max="100"></progress></td>
+            </tr>
+      
+          </tbody>
+        </table>
+
+      
+        
+        
+        <details>
+          <summary>
+            <h6>Unchanged annotations <i>arrow_drop_down</i></h6>
+          </summary>
+          <article>
+            <table>
+              <thead>
+                <tr>
+                  <th>Annotation</th>
+                  <th>Remaining</th>
+                  <th>Basepairs</th>
+                  <th>Percentage</th>
+                </tr>
+              </thead>
+              <tbody>
+        
+                <tr>
+                  <td>phos: Phosphoserine</td>
+                  <td>100.0% </td>
+                  <td>6/6
+                  <td><progress value="100.0" max="100"></progress></td>
+                </tr>
+        
+              </tbody>
+            </table>
+          </article>
+        </details>
+        
+      
+  </article>
+    
+  </div>
+
+      <div id="external-resources" class="page padding">
+  <h5>External resources</h5>
+  
+  Please specify a variant to discover links to external resources.
+  
+</div>
+
+      <div id="export-report" class="page padding">
+        <h5>Export report</h5>
+        <p>Here will be an option to export the report, either as a stand alone html page or a PDF document</p>
+      </div>
+
+      <div id="documentation" class="page padding">
+  <h5>Documentation</h5>
+  <h6>Introduction</h6>
+  <p>The Genetic Therapy Generator Toolkit helps users determine whether a given variant (or set of variants) can be corrected with a genetic therapy. Rather than relying on explicit guidelines about which kinds of variants can be treated, GTGT simulates the effect of every possible therapy and ranks the therapies based on how many of the transcript features are restored.</p>
+  <p>Because of this unique approach, GTGT can identify possible therapies when it appears none are available, for example by skipping upstream or downstream exons to restore the reading frame, or by skipping adjacent exons (experimental).</p>
+  <h6>Interpreting results</h6>
+  <p>The first two entries on the results page will always be the analysis of the <em>Wildtype</em> and <em>Input</em> versions of the transcript. Each entry contains the name, HGVS notation and short description of the therapy. The most important section is the <em>Annotation overview</em>, which lists the percentage of each feature of the transcript that remains after the mutations (and therapy) have been applied.
+
+  The <em>Exons</em> feature refers to all bases that make up the exon. When GTGT skips an exon, the bases of the exon will be removed from the <em>Exons</em> feature, which can be seen from the percentage and the remaining basepairs.
+
+  The <em>Coding exons</em> refer to the bases that make up the coding sequence of the transcript. Changes in the <em>Coding exons</em> take the actual predicted protein changes in the transcript into account. For example, in the case of a frameshift variant all bases after the frameshift will be removed from the <em>Coding exons</em> feature, but not from the <em>Exons</em>.
+  <p>The extended documentation for this tool can be found on <a class="link" href="https://gtgt.readthedocs.io/en/latest/">https://gtgt.readthedocs.io</a>.</p>
+</div>
+
+<div id="development" class="page padding">
+  <h5>Development</h5>
+  <p>The Genetic Therapy Generator Toolkit has been developed by the <a href="https://rnatherapy.nl/", class="link", target="_blank">Dutch Center for RNA Therapeutics</a>, who have committed to continue to fund the development of GTGT until at least June 2027.</p>
+  <p>GTGT can be installed locally via <a class="link" target="_blank" href="https://pypi.org/p/gtgt">PyPi</a>, or you can install the development version from <a class="link" href="https://github.com/DCRT-LUMC/GTGT" target="_blank">Github</a>. We welcome contributions, bug reports and other feedback on GitHub or via an email to <a class="link" href="mailto:DCRT@LUMC.nl">DCRT@LUMC.nl</a>.</p>
+  <p>GTGT is free to use and redistribute under the conditions of the <em>GNU Affero General Public License v3.0</em>.</p>
+</div>
+
+<div id="disclaimer" class="page padding">
+  <h5>Disclaimer</h5>
+  <p>Copyright© 2023 LUMC <a class="link" href="https://www.lumc.nl">https://www.lumc.nl</a></p>
+  <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+  <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.</p>
+  <p>By accessing and using the program in any manner (including copying, modifying or redistributing the program), you accept and agree to the applicability of the GNU Affero General Public License. You can find and read this license on GNU Affero General Public License - GNU Project - Free Software Foundation.</p>
+</div>
+
+    </main>
+  </body>
+</html>
+
