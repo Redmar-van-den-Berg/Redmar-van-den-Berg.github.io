@@ -1,0 +1,135 @@
+<html>
+  <head>
+    <script>
+
+      async function dna_to_rna(query){
+        const url = `https://mutalyzer.nl/api/dna_to_rna/${query}`;
+        console.info(url);
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Response status for ${query}: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if ("description" in result) {
+          return result['description'];
+        }
+        else {
+          msg=result['custom']['errors'][0]['details'];
+          throw new Error('Mutalyzer error: ${msg}');
+        }
+      }
+      async function normalize(query){
+        const url = `https://mutalyzer.nl/api/normalize/${query}`;
+        console.info(url);
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          console.error('Response was not OK: ', response.ok);
+          throw new Error(`Response status for ${query}: ${response.status}`);
+        }
+
+        const result = await response.json();
+
+        if ("corrected_description" in result) {
+          return result['corrected_description'];
+        }
+        else {
+          msg=result['custom']['errors'][0]['details'];
+          throw new Error('Mutalyzer error: ${msg}');
+        }
+      }
+      async function rna_to_dna(rna) {
+
+        // First, convert to uppercase
+        dna = rna.toUpperCase();
+
+        // Next, correct errors
+        dna = dna
+          // Rewrite coordinates to c.
+          .replace(':R.', ':c.')
+          // Rewrite operations back to lowercase
+          .replaceAll('DEL', 'del')
+          .replaceAll('DUP', 'dup')
+          .replaceAll('INS', 'ins')
+          .replaceAll('INS', 'ins')
+          .replaceAll('INV', 'inv')
+          // Rewrite every U to T for DNA
+          .replaceAll('U', 'T')
+        ;
+
+        return await normalize(dna)
+      }
+
+      async function dna_input() {
+        var dna = document.getElementById("hgvs_dna");
+        var rna = document.getElementById("hgvs_rna");
+
+        // If there is already something in the RNA input field we do not change it
+        if (rna.value) {
+          return
+        }
+
+        // Query mutalyzer for the RNA description
+        var rna_description='';
+        try {
+          rna_description = await dna_to_rna(dna.value);
+        }
+        catch (error) {
+          rna_description = 'Unable to predict RNA description';
+          rna.style.color = "red";
+        }
+
+        console.info(`rna_description = ${rna_description}`);
+
+        // Fill out the RNA description when succesfull
+        rna.value = rna_description;
+      }
+      async function rna_input() {
+        var dna = document.getElementById("hgvs_dna");
+        var rna = document.getElementById("hgvs_rna");
+
+        // If there is already something in the DNA input field we do not change it
+        if (dna.value) {
+          return
+        }
+
+        // Query mutalyzer for the RNA description
+        var dna_description='';
+        try {
+          dna_description = await rna_to_dna(rna.value);
+        }
+        catch (error) {
+          dna_description = 'Unable to predict DNA description';
+          dna.style.color = "red";
+        }
+
+        console.info(`dna_description = ${dna_description}`);
+
+        // Fill out the DNA description when succesfull
+        dna.value = dna_description;
+      }
+
+      function select_rna() {
+        var rna = document.getElementById("hgvs_rna");
+        rna.style.color = "";
+        rna.select();
+      }
+
+      function select_dna() {
+        var dna = document.getElementById("hgvs_dna");
+        dna.style.color = "";
+        dna.select();
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1> Testing updating input fields </h1>
+    <p>DNA description: <input size=50 type="text" id="hgvs_dna" onfocusin="select_dna()" onfocusout="dna_input()"></p>
+    <br/>
+    <p>RNA description: <input size=50 type="text" id="hgvs_rna" onfocusin="select_rna()" onfocusout="rna_input()"></p>
+  </body>
+</html>
